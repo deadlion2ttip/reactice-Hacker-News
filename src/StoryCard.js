@@ -28,6 +28,23 @@ class StoryCard extends Component {
         }
     }
 
+    timeAdjust = () => {
+        let timeCreated = this.state.story.time * 1000
+        let timeSince = new Date() - timeCreated 
+        let minutes = ((timeSince / 1000) / 60)
+        console.log(timeCreated)
+        console.log(minutes)
+        if (minutes < 1){
+            return ' just now '
+        } else if (minutes < 60) {
+            return Math.floor(minutes) + ' minutes '
+        }else if (minutes >= 60) {
+            let hours = minutes / 60
+            let minutesRemaining = minutes % 60
+            return Math.floor(hours) + ' hours ' +  (Math.floor(minutesRemaining) !== 0? Math.floor(minutesRemaining) + ' minutes ago': "ago")
+        }
+    }
+
     render() {
         let story = this.state.story
         console.log(story)
@@ -38,10 +55,24 @@ class StoryCard extends Component {
         } else {
             return (
                 <li className="story-cards" key={this.props.storyId}>
-                    <a href={story.url}>
+                    <a href={story.url}><span className='title'>
                     {story.title}
+                    </span> 
                     </a>
+                    <span className='time-since'>
+                        {' Posted: ' + this.timeAdjust()}
+                    </span> 
+                    <span className='score'>
+                    {' ' + story.score + ' points' }
+                    </span> 
+                    <span className='author'>
+                         {' by ' + story.by + ' '}
+                    </span> 
+                    <span className='comment-number'>
+                        {story.descendants === 0? 'discuss' : story.descendants + ' comments'}
+                    </span>
                     </li>
+                    
             )
         }
     }
