@@ -37,7 +37,7 @@ class StoryCard extends Component {
         if (minutes < 1){
             return ' just now '
         } else if (minutes < 60) {
-            return Math.floor(minutes) + ' minutes '
+            return Math.floor(minutes) + ' minutes ago '
         }else if (minutes >= 60) {
             let hours = minutes / 60
             let minutesRemaining = minutes % 60
