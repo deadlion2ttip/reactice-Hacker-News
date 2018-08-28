@@ -43,10 +43,19 @@ class TopStories extends Component {
             //      console.log(storyCard)
             //  })
         })
-        return (
-            <ul>
-                {storyCards}
-            </ul>)
+
+        let stories = this.state.currentStories
+
+        if (stories.length === 0) {
+            return (
+                <div className='story-cards'>Loading...</div>
+            )
+        } else {
+            return (
+                <ul>
+                    {storyCards}
+                </ul>)
+        }
     }
 }
 

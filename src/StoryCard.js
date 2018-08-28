@@ -61,12 +61,13 @@ class StoryCard extends Component {
                     </a>
                     <span className='time-since'>
                         {' Posted: ' + this.timeAdjust()}
-                    </span> 
+                    </span>
+                    <br/>
                     <span className='score'>
                     {' ' + story.score + ' points' }
                     </span> 
                     <span className='author'>
-                         {' by ' + story.by + ' '}
+                         {' by ' + story.by + ' | '}
                     </span> 
                     <span className='comment-number'>
                         {story.descendants === 0? 'discuss' : story.descendants + ' comments'}
