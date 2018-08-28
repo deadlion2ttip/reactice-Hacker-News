@@ -32,7 +32,7 @@ class TopStories extends Component{
 
     render(){
         let storyCards = this.state.currentStories.map((storyId, index) => {
-            return <li>{storyId}</li>
+            return <li className="story-cards">{storyId}</li>
         })
         return(
         <ul> 
