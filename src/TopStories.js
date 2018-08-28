@@ -1,43 +1,52 @@
 import React, { Component } from 'react';
+import StoryCard from './StoryCard'
 
-class TopStories extends Component{
-    constructor(props){
+class TopStories extends Component {
+    constructor(props) {
         super(props)
         this.state = {
             currentStories: [],
             storyCards: []
         }
-    
+
     }
 
     fetchTopStoriesList = () => {
-       return fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
-        .then((Response) => {
-           return Response.json() 
-        })
-        .then((articleIds) => {
-           this.setState({
-               currentStories: articleIds
-           })
-           return articleIds
-        })
+        return fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
+            .then((response) => {
+                return response.json()
+            })
+            .then((articleIds) => {
+                this.setState({
+                    currentStories: articleIds
+                })
+                return articleIds
+            })
     }
 
-    componentDidMount(){
-        this.fetchTopStoriesList()
-        .then((storyIds) => {
-            console.log(this.state.currentStories)
-        })
+    componentDidMount() {
+        let currentStories = this.state.currentStories
+        if (currentStories.length === 0) {
+            this.fetchTopStoriesList()
+        }
     }
 
-    render(){
+    render() {
         let storyCards = this.state.currentStories.map((storyId, index) => {
-            return <li className="story-cards">{storyId}</li>
+
+            return <StoryCard storyId={storyId} key={storyId} />
+            // return this.fetchStory(storyId).then((story)=>{ 
+            //     let theStory = story;
+            //     console.log(theStory)
+            //     return (<li className="story-cards" key={index}>{theStory.title}</li>)
+            //  }).then((storyCard) => {
+            //      console.log(storyCard)
+            //  })
         })
-        return(
-        <ul> 
-            {storyCards}
-        </ul>)
+        return (
+            <ul>
+                {storyCards}
+            </ul>)
     }
 }
 
