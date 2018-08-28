@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+
 
 class StoryCard extends Component {
     constructor(props) {
@@ -69,9 +71,11 @@ class StoryCard extends Component {
                     <span className='author'>
                          {' by ' + story.by + ' | '}
                     </span> 
+                    <Link to={`/comments/${this.props.storyId}`} param={{ storyid : this.props.storyId}}>
                     <span className='comment-number'>
                         {story.descendants === 0? 'discuss' : story.descendants + ' comments'}
                     </span>
+                    </Link>
                     </li>
                     
             )

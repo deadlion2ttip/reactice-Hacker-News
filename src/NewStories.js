@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StoryCard from './StoryCard'
 
-class TopStories extends Component {
+class NewStories extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -11,8 +11,8 @@ class TopStories extends Component {
 
     }
 
-    fetchTopStoriesList = () => {
-        return fetch('https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty')
+    fetchnewStoriesList = () => {
+        return fetch('https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty')
             .then((response) => {
                 return response.json()
             })
@@ -27,13 +27,15 @@ class TopStories extends Component {
     componentDidMount() {
         let currentStories = this.state.currentStories
         if (currentStories.length === 0) {
-            this.fetchTopStoriesList()
+            this.fetchnewStoriesList()
         }
     }
 
     render() {
         let storyCards = this.state.currentStories.map((storyId, index) => {
+
             return <StoryCard storyId={storyId} key={storyId} />
+
         })
 
         let stories = this.state.currentStories
@@ -51,4 +53,4 @@ class TopStories extends Component {
     }
 }
 
-export default TopStories
+export default NewStories
