@@ -31,10 +31,14 @@ class CommentsPage extends Component{
     render(){
         let directDescendants = 'Loading...'
         if (this.state.story){
+            if (this.state.story.kids){
             directDescendants = []
         this.state.story.kids.map((commentId)=> {
             return directDescendants.push(<CommentCard className='comment-card' key={commentId} commentId={commentId} />)
         })
+    } else {
+        directDescendants = 'There are no comments on this thread...'
+    }
     }
         return(
         <div>
