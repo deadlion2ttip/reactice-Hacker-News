@@ -7,7 +7,8 @@
     "react-dom": "^16.4.2",
     "react-infinite-scroller": "^1.2.0",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5"
+    "react-scripts": "1.1.5",
+    "sanitize-html": "^1.18.4"
   },
   "scripts": {
     "start": "react-scripts start",
