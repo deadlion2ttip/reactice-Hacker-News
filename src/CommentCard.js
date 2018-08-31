@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import sanitizeHtml from 'sanitize-html';
+import { Link } from 'react-router-dom'
 
 class CommentCard extends Component {
     constructor(props) {
@@ -62,18 +63,32 @@ class CommentCard extends Component {
                 })
             }
             const clean = sanitizeHtml(comment.text)
+            let link = ''
+            let commentText = ''
+            if (!comment.by) {
+                link = 'Deleted'
+            } else {
+                link = <Link className='author-link' to={`/user/${comment.by}`} param={{ userid: comment.by }}>{comment.by}</Link>
+            }
+
+            if (clean === 'undefined') {
+                commentText = '[Deleted]'
+            } else {
+                commentText = <div dangerouslySetInnerHTML={this.createMarkup(clean)} />
+            }
+            
             return (
                 <div className="story-cards" key={this.props.commentId}>
                     <span className='time-since'>
                         {' Posted: ' + this.timeAdjust()}
                     </span>
-
+                    {/* <Link className='author-link' to={`/user/${comment.by}`} param={{ userid: comment.by }}>{comment.by}</Link> */}
                     <span className='author'>
-                        {' by ' + (comment.by ? comment.by : 'Deleted')}
+                        {' by '} {link}
                     </span>
                     <br />
                     <span className='comment-text'>
-                        <div dangerouslySetInnerHTML={this.createMarkup(clean)} />
+                        {commentText}
                     </span>
                     {directDescendants ? directDescendants : ''}
 
