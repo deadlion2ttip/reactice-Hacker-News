@@ -28,7 +28,6 @@ class UserPage extends Component {
         }
     }
     render() {
-        console.log(this.state.userid)
         let user = this.state.userid
         if (!user) {
             return (
@@ -39,9 +38,9 @@ class UserPage extends Component {
             return (
                 <div>
                     User: {user.id}
-                    <br/>
+                    <br />
                     Karma: {user.karma}
-                    <br/>
+                    <br />
                     Created: {date.toString()}
                 </div>
             )
