@@ -63,7 +63,7 @@ class StoryCard extends Component {
                             {story.title}
                         </span>
                             <span className='url'>
-                                ({story.url.slice(0, 25) + '...'})
+                                {' ('+story.url.slice(0, 25) + '...)'}
                     </span>
                         </a> :
                         <Link to={`/comments/${this.props.storyId}`} param={{ storyid: this.props.storyId }}>

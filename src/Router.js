@@ -12,8 +12,8 @@ class Router extends Component {
       <Fragment>
       <div className='story-cards' id='banner'>
         Totally not Hacker News...
-        <Link to='/newstories'>New Stories</Link>
         <Link to='/topstories'>Top Stories</Link>
+        <Link to='/newstories'>New Stories</Link>
       </div>
         <Switch>        
           <Route exact path='/newstories' component={NewStories} />

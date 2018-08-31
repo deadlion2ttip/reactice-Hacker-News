@@ -2,18 +2,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: black;
+  background-color: darkslategray;
 }
 
 #root {
 width: 80%;
 margin: auto;
-background-color: white;
+background-color: gray;
 
 }
 .story-cards {
   padding: 10px;
-  background-color: gray;
+  background-color: lightgray;
   margin-top: 10px;
   list-style: none;
 }
@@ -23,6 +23,29 @@ ul{
 #banner a{
   margin: 10px;
 }
+#banner {
+  font-size: 1.2em;
+}
+.url {
+  font-size: .9em;
+  color: darkblue;
+}
 p {
   margin: 0;
+}
+.time-since {
+  font-size: .9em;
+  color: darkslategray;
+}
+.author {
+  color: darkslategray;
+}
+.comment-text {
+  font-size: 1.2em;
+}
+.comment-number {
+  font-size: .9em;
+}
+.score {
+  font-size: .9em;
 }
