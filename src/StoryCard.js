@@ -34,8 +34,6 @@ class StoryCard extends Component {
         let timeCreated = this.state.story.time * 1000
         let timeSince = new Date() - timeCreated
         let minutes = ((timeSince / 1000) / 60)
-        console.log(timeCreated)
-        console.log(minutes)
         if (minutes < 1) {
             return ' just now '
         } else if (minutes < 60) {
@@ -49,13 +47,11 @@ class StoryCard extends Component {
 
     render() {
         let story = this.state.story
-        console.log(story)
         if (!story) {
             return (
                 <div className='story-cards'>Loading...</div>
             )
         } else {
-            console.log(typeof story.url)
             return (
                 <li className="story-cards" key={this.props.storyId}>
                     {(story.url ?

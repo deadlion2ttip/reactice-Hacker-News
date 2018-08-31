@@ -36,12 +36,12 @@ class UserPage extends Component {
         } else {
             let date = new Date(user.created * 1000).toLocaleDateString()
             return (
-                <div>
-                    User: {user.id}
+                <div className='story-cards' id='user-card'>
+                    <span id='user-id'>User: {user.id}</span>
                     <br />
-                    Karma: {user.karma}
+                    <span id='user-karma'>Karma: {user.karma}</span>
                     <br />
-                    Created: {date.toString()}
+                    <span id='user-created'>Created: {date.toString()}</span>
                 </div>
             )
         }
