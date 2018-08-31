@@ -80,7 +80,7 @@ class StoryCard extends Component {
                         {' ' + story.score + ' points'}
                     </span>
                     <span className='author'>
-                        {' by ' + story.by + ' | '}
+                        {' by '}<Link className='author-link' to={`/user/${story.by}`} param={{ userid: story.by }}>{story.by}</Link>{' | '}
                     </span>
                     <Link to={`/comments/${this.props.storyId}`} param={{ storyid: this.props.storyId }}>
                         <span className='comment-number'>
